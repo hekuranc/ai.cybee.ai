@@ -19,51 +19,27 @@ export default function Home() {
 
   // Function to render messages with support for newline and code highlighting
   function NewlineText({ text }) {
-    const codeRegex = /```([\s\S]*?)```/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-
-    while ((match = codeRegex.exec(text)) !== null) {
-      // Push the text before the code block
-      if (match.index > lastIndex) {
-        parts.push(text.slice(lastIndex, match.index));
-      }
-      // Push the code block with highlighting
-      parts.push(
-        <pre key={match.index} className="hljs">
-          <code
-            dangerouslySetInnerHTML={{
-              __html: hljs.highlightAuto(match[1]).value,
-            }}
-          />
-        </pre>
-      );
-      lastIndex = match.index + match[0].length;
-    }
-
-    // Push any remaining text after the last code block
-    if (lastIndex < text.length) {
-      parts.push(text.slice(lastIndex));
-    }
-
-    return parts.map((part, index) => {
-      if (typeof part === "string") {
+    return text.split("\n").map((part, index) => {
+      // Check if the part is a code block
+      if (part.startsWith("<code>") && part.endsWith("</code>")) {
+        const code = part.substring(6, part.length - 7); // Remove <code> tags
+        const highlightedCode = hljs.highlightAuto(code).value;
         return (
-          <span key={index}>
-            {part.split("\n").map((line, lineIndex) => (
-              <React.Fragment key={lineIndex}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </span>
+          <pre key={index}>
+            <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+          </pre>
         );
       }
-      return part;
+      return (
+        <span key={index}>
+          {part}
+          <br />
+        </span>
+      );
     });
   }
 
+  // Handle message sending
   // Handle message sending
   const sendMessage = async () => {
     if (!message.trim()) return; // Ignore empty messages
