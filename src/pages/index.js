@@ -99,7 +99,7 @@ export default function Home() {
   return (
     <div className="bg-gray-100 flex flex-col h-screen m-0 font-sans">
       <h1 className="text-center p-5 text-2xl font-bold text-gray-700">
-        Hi! This is Semon AI
+        Hi! This is Cybee AI
       </h1>
       <div className="flex-grow overflow-y-scroll p-4 m-4 bg-white shadow rounded">
         {chatHistory.map((msg, index) => (
