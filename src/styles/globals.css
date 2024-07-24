@@ -1,0 +1,88 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+/* Chat Message Styles */
+.message {
+  padding: 8px 12px;
+  border-radius: 15px;
+  margin: 4px 0;
+  max-width: 80%;
+  display: inline-block;
+}
+
+.message.user {
+  background-color: #e5e9f2; /* You can change this to blue or any color you prefer for the user */
+  color: #333;
+  margin-left: auto;
+  border-top-right-radius: 5px;
+  text-align: left;
+}
+
+.message.llama {
+  background-color: #d1f5d3; /* You can change this to green or any color you prefer for the chatbot */
+  color: #333;
+  margin-right: auto;
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+textarea {
+  height: 50px;
+  /* Define a default height, adjust according to your design */
+  overflow-y: hidden;
+  /* Prevents vertical scrollbar */
+  resize: vertical;
+  /* Allows vertical resize */
+}
+
+
+pre {
+  background-color: #000000 !important;
+  /* Dark background for code block */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  overflow-x: auto;
+  /* Useful for long lines of code */
+  font-size: 0.9em;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+  /* Fallback to common monospace fonts */
+}
+
+code {
+  color: #d1d5db !important;
+  /* Default code color */
+}
+
+/* Highlight.js specific styling */
+.hljs-attribute {
+  color: #00a67d !important;
+  /* Green */
+}
+
+.hljs-string {
+  color: #df3079 !important;
+  /* Red */
+}
+
+.hljs-punctuation {
+  color: #00a67d !important;
+  /* Blue */
+}
+
+.hljs-bullet {
+  color: #d19a66 !important;
+  /* Orange */
+}
+
+/* Add other .hljs-* classes if needed for other code elements and adjust their colors accordingly. */
+
+.code-header {
+  background-color: #333;
+  padding: 8px;
+  font-size: 0.8em;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-weight: bold;
+}
